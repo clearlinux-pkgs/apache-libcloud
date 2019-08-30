@@ -1,5 +1,5 @@
 PKG_NAME := apache-libcloud
-URL = https://files.pythonhosted.org/packages/b6/a0/707142df518a602a2e36f9aa4f6dcc2cc9981843ffb7ba1207f7a084819d/apache-libcloud-2.5.0.tar.gz
+URL = https://files.pythonhosted.org/packages/08/c7/951755bbfecf5eab30448062ba706e71a1f2e8b51413916c2dcea8f2ad41/apache-libcloud-2.6.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
