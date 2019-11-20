@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x2C0754B2CE0692F3 (tomaz@tomaz.me)
 #
 Name     : apache-libcloud
-Version  : 2.6.0
-Release  : 4
-URL      : https://files.pythonhosted.org/packages/08/c7/951755bbfecf5eab30448062ba706e71a1f2e8b51413916c2dcea8f2ad41/apache-libcloud-2.6.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/08/c7/951755bbfecf5eab30448062ba706e71a1f2e8b51413916c2dcea8f2ad41/apache-libcloud-2.6.0.tar.gz
-Source1 : https://files.pythonhosted.org/packages/08/c7/951755bbfecf5eab30448062ba706e71a1f2e8b51413916c2dcea8f2ad41/apache-libcloud-2.6.0.tar.gz.asc
+Version  : 2.6.1
+Release  : 5
+URL      : https://files.pythonhosted.org/packages/4a/5d/5cb60e03b2357c95702ff4263e689935679baa32e591de4576c98398a508/apache-libcloud-2.6.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/4a/5d/5cb60e03b2357c95702ff4263e689935679baa32e591de4576c98398a508/apache-libcloud-2.6.1.tar.gz
+Source1 : https://files.pythonhosted.org/packages/4a/5d/5cb60e03b2357c95702ff4263e689935679baa32e591de4576c98398a508/apache-libcloud-2.6.1.tar.gz.asc
 Summary  : A standard Python library that abstracts away differences among multiple cloud provider APIs. For more information and documentation, please see http://libcloud.apache.org
 Group    : Development/Tools
 License  : Apache-2.0
@@ -56,14 +56,15 @@ python3 components for the apache-libcloud package.
 
 
 %prep
-%setup -q -n apache-libcloud-2.6.0
+%setup -q -n apache-libcloud-2.6.1
+cd %{_builddir}/apache-libcloud-2.6.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567175385
+export SOURCE_DATE_EPOCH=1574275555
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -77,8 +78,8 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apache-libcloud
-cp LICENSE %{buildroot}/usr/share/package-licenses/apache-libcloud/LICENSE
-cp NOTICE %{buildroot}/usr/share/package-licenses/apache-libcloud/NOTICE
+cp %{_builddir}/apache-libcloud-2.6.1/LICENSE %{buildroot}/usr/share/package-licenses/apache-libcloud/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/apache-libcloud-2.6.1/NOTICE %{buildroot}/usr/share/package-licenses/apache-libcloud/904397a41ddf409c9cf5be84010b5edb585fb34f
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -89,8 +90,8 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/apache-libcloud/LICENSE
-/usr/share/package-licenses/apache-libcloud/NOTICE
+/usr/share/package-licenses/apache-libcloud/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+/usr/share/package-licenses/apache-libcloud/904397a41ddf409c9cf5be84010b5edb585fb34f
 
 %files python
 %defattr(-,root,root,-)
