@@ -6,7 +6,7 @@
 #
 Name     : apache-libcloud
 Version  : 2.8.0
-Release  : 9
+Release  : 10
 URL      : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz
 Source1  : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz.asc
