@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x2C0754B2CE0692F3 (tomaz@tomaz.me)
 #
 Name     : apache-libcloud
-Version  : 2.8.0
-Release  : 11
-URL      : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/2e/d3/6c4412eefc981abfc36cb9b50f51dffd4d45760e8c38ebd84c59d6043731/apache-libcloud-2.8.0.tar.gz.asc
+Version  : 2.8.1
+Release  : 12
+URL      : https://files.pythonhosted.org/packages/b6/c6/247f1f1fc83b0318e76d7a49fb1c11920c1067c7d6bf8bde3a173b3ffd36/apache-libcloud-2.8.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b6/c6/247f1f1fc83b0318e76d7a49fb1c11920c1067c7d6bf8bde3a173b3ffd36/apache-libcloud-2.8.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/b6/c6/247f1f1fc83b0318e76d7a49fb1c11920c1067c7d6bf8bde3a173b3ffd36/apache-libcloud-2.8.1.tar.gz.asc
 Summary  : A standard Python library that abstracts away differences among multiple cloud provider APIs. For more information and documentation, please see http://libcloud.apache.org
 Group    : Development/Tools
 License  : Apache-2.0
@@ -130,21 +130,25 @@ Summary: python3 components for the apache-libcloud package.
 Group: Default
 Requires: python3-core
 Provides: pypi(apache-libcloud)
+Requires: pypi(requests)
+Requires: pypi(enum34)
+Requires: pypi(typing)
+Requires: pypi(backports.ssl-match-hostname)
 
 %description python3
 python3 components for the apache-libcloud package.
 
 
 %prep
-%setup -q -n apache-libcloud-2.8.0
-cd %{_builddir}/apache-libcloud-2.8.0
+%setup -q -n apache-libcloud-2.8.1
+cd %{_builddir}/apache-libcloud-2.8.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582845961
+export SOURCE_DATE_EPOCH=1583292204
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -158,8 +162,8 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/apache-libcloud
-cp %{_builddir}/apache-libcloud-2.8.0/LICENSE %{buildroot}/usr/share/package-licenses/apache-libcloud/2b8b815229aa8a61e483fb4ba0588b8b6c491890
-cp %{_builddir}/apache-libcloud-2.8.0/NOTICE %{buildroot}/usr/share/package-licenses/apache-libcloud/904397a41ddf409c9cf5be84010b5edb585fb34f
+cp %{_builddir}/apache-libcloud-2.8.1/LICENSE %{buildroot}/usr/share/package-licenses/apache-libcloud/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/apache-libcloud-2.8.1/NOTICE %{buildroot}/usr/share/package-licenses/apache-libcloud/904397a41ddf409c9cf5be84010b5edb585fb34f
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
